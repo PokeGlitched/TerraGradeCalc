@@ -178,34 +178,34 @@ function calculateFinal(){
 <script>
 function calculateGN() {
     
+
     FACat = (document.getElementById("FACat")).value;
   if (FACat === "Tests"){
     sumOfOtherParts = (HWWorth + OWorth)
     FAWeight = WeightofTests
-    FACategorysPoints = document.getElementById("pointspossibleT").value
-    FACategorysPointsE = document.getElementById("pointsearnedT").value
+    FACategorysPoints = Number(document.getElementById("pointspossibleT").value)
+    FACategorysPointsE = Number(document.getElementById("pointsearnedT").value)
   } else if (FACat === "HW"){
     sumOfOtherParts = (TestsWorth + OWorth)
     FAWeight = WeightofHW
-    FACategorysPoints = document.getElementById("pointspossibleH").value
-    FACategorysPointsE = document.getElementById("pointsearnedH").value
+    FACategorysPoints = Number(document.getElementById("pointspossibleH").value)
+    FACategorysPointsE = Number(document.getElementById("pointsearnedH").value)
   }
   else if (FACat === "O"){
     sumOfOtherParts = (TestsWorth + HWWorth)
     FAWeight = WeightofO
-    FACategorysPoints = document.getElementById("pointspossibleO").value
-    FACategorysPointsE = document.getElementById("pointsearnedO").value
+    FACategorysPoints = Number(document.getElementById("pointspossibleO").value)
+    FACategorysPointsE = Number(document.getElementById("pointsearnedO").value)
   } else {document.getElementById("FA Output").textContent =
         "Make sure to select a category for your final assignment!"}
     
     
     
-    if (OWorth !== undefined && HWWorth !== undefined && TestsWorth !== undefined){
+    if (FACat){
         document.getElementById("resultsGN").textContent =
-        "You need a " + (( (FGWanted+sumOfOtherParts) * (FACategoryPoints + pointspossibleGN)) - FACategoryPointsE) + "% on this assignment to achieve your goal grade. Better start studying!"
+        "You need a " + ((((Number(document.getElementById("FGWanted").value) - sumOfOtherParts) / FAWeight) / 100 * (FACategorysPoints + Number(document.getElementById("pointspossibleGN").value)) - FACategorysPointsE) / Number(document.getElementById("pointspossibleGN").value) * 100).toFixed(2) + "% on this assignment to achieve your goal grade. Better start studying!"
     }
 }
-
 </script>
 </div>
 
